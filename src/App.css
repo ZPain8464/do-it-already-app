@@ -1,0 +1,320 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+}
+/* Nav bar */
+nav {
+  border: #e76f51 solid 2px;
+  background-color: #e76f51;
+  padding: 15px;
+  font-size: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+nav h1 {
+  font-size: 35px;
+}
+
+.nav-links a {
+  margin: 10px;
+  font-size: 25px;
+}
+
+nav h1,
+nav a {
+  text-decoration: none;
+  color: #3d405b;
+}
+
+nav a:hover {
+  color: #e9c46a;
+}
+
+/* Header / get started homepage */
+
+.App {
+  text-align: center;
+}
+
+header {
+  padding: 200px;
+}
+
+header h2 {
+  font-size: 35px;
+  color: #3d405b;
+}
+
+span {
+  display: block;
+}
+
+/* button */
+#get-started {
+  padding: 14px;
+  font-size: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+#get-started a {
+  text-decoration: none;
+  color: #3d405b;
+}
+
+#get-started a:hover {
+  color: #e76f51;
+}
+
+/* Features / get started homepage */
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: #e76f51;
+  padding: 150px;
+}
+
+.homepage-features {
+  border: #e9c46a 2px solid;
+  padding: 80px;
+  margin: 15px;
+}
+
+/* WhyUseDIA / get started homepage */
+
+.why-section {
+  padding: 250px;
+}
+
+.why-section h3 {
+  font-size: 35px;
+  color: #3d405b;
+}
+
+.why-section p {
+  padding: 35px;
+}
+
+/* Footer */
+.footer {
+  border: #e76f51 2px solid;
+  background-color: #e76f51;
+  color: #3d405b;
+}
+
+/* Homepage media queries */
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  header {
+    padding: 50px;
+  }
+
+  .why-section {
+    padding: 50px;
+  }
+
+  .features {
+    padding: 122px;
+  }
+}
+
+/* About page */
+
+.about-ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-ul li {
+  padding: 25px;
+}
+
+.about h1 {
+  margin-top: 40px;
+  color: #3d405b;
+}
+
+/* Login page */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.login-form {
+  color: #3d405b;
+}
+
+.login-form h1 {
+  margin-top: 25px;
+}
+
+.create-an-account {
+  padding: 15px;
+}
+
+/* Register user page */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CategoriesPage / Main categories page */
+
+.categories-header h1,
+h2 {
+  color: #3d405b;
+}
+
+.prod {
+  background-color: #48cae4;
+}
+
+.fit {
+  background-color: #e76f51;
+}
+
+.fin {
+  background-color: #e9c46a;
+}
+
+.trav {
+  background-color: #64dfdf;
+}
+
+.bucket-list-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  max-width: 1200px;
+  flex-direction: column;
+  padding-bottom: 65px;
+}
+
+.bucket-list-category {
+  margin: 15px 2.5%;
+  padding: 50px;
+  flex-basis: 45%;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.categories-1-2,
+.categories-3-4 {
+  flex: 1;
+}
+
+@media screen and (min-width: 767px) {
+  .bucket-list-categories {
+    flex-direction: row;
+  }
+
+  header.categories-header {
+    padding: 45px;
+  }
+}
+
+.bucket-list-categories button {
+  border-radius: 20px;
+  color: black;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.view-bucket-list-todos {
+  margin-bottom: 50px;
+  padding: 15px;
+  font-size: 25px;
+}
+
+/* BucketListTodos / main todos page */
+
+.main-todos {
+  text-align: center;
+  display: flex;
+}
+
+.completed-todos,
+.pending-todos {
+  flex: 1;
+  border-right: grey 2px solid;
+}
+
+ul li {
+  padding: 0;
+  list-style-type: none;
+  border: grey 2px solid;
+  margin: 10px;
+  background-color: #e5e5e5;
+}
+
+ul {
+  padding-left: 0;
+}
+
+.view-todo {
+  flex: 2;
+}
+
+.view-todo-task {
+  border: grey 2px solid;
+  background-color: #e5e5e5;
+  width: 75%;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .completed-todos {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 427px) {
+  .completed-view {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 427px) {
+  .view-todo {
+    display: none;
+  }
+}
+
+/* AddProductivityFolder */
+.productivity-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px;
+}
+
+/* AddProductivityTodo  */
+
+.add-todo-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-todo-form button {
+  padding: 5px;
+  margin: 10px;
+}
+
+#category-dropdown {
+  padding: 5px;
+  margin: 10px;
+}
