@@ -3,6 +3,22 @@ import { Link } from "react-router-dom";
 import DummyStore from "../../DummyStore/DummyStore";
 
 export default class CompletedTodos extends React.Component {
+  state = {
+    show: false,
+  };
+
+  showModal = () => {
+    this.setState({
+      show: true,
+    });
+  };
+
+  hideModal = () => {
+    this.setState({
+      show: false,
+    });
+  };
+
   render() {
     const completedTodos = DummyStore.todos;
     return (

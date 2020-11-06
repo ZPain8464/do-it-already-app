@@ -276,16 +276,21 @@ ul {
 }
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
-  .completed-todos {
-    display: none;
+  .main-todos {
+    display: flex;
+    flex-direction: column;
   }
+
+  /* .completed-todos {
+    display: none;
+  } */
 }
 
-@media screen and (min-width: 427px) {
+/* @media screen and (min-width: 427px) {
   .completed-view {
     display: none;
   }
-}
+} */
 
 @media screen and (min-width: 320px) and (max-width: 427px) {
   .view-todo {
