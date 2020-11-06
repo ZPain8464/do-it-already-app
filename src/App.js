@@ -50,7 +50,12 @@ export default class App extends Component {
         <main>
           <Route
             exact
-            path={["/bucket-list-todos", "/bucket-list-todos/:id"]}
+            path={[
+              "/bucket-list-todos",
+              "/bucket-list-todos/:id",
+              "/completed-todos",
+              "/completed-todos/:id",
+            ]}
             component={BucketListTodos}
           />
           <Route exact path="/" component={Features} />

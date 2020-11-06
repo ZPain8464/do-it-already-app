@@ -4,7 +4,6 @@ import DummyStore from "../../DummyStore/DummyStore";
 export default class ViewTodo extends React.Component {
   render() {
     const viewTodo = DummyStore.todos;
-    console.log(this.props.match.params.id);
     return (
       <div className="view-todo">
         <h2>View Todo</h2>

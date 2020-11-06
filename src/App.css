@@ -293,6 +293,24 @@ ul {
   }
 }
 
+@media screen and (min-width: 320px) and (max-width: 427px) {
+  .pending-todos ul li {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .view-todo-modal-button {
+    padding: 7px;
+    margin: 5px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .view-todo-modal-button {
+    display: none;
+  }
+}
+
 /* AddProductivityFolder */
 .productivity-form-field {
   display: flex;
@@ -317,4 +335,37 @@ ul {
 #category-dropdown {
   padding: 5px;
   margin: 10px;
+}
+
+/* Modal styling */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 43, 43, 0.056);
+}
+
+.modal-main {
+  position: fixed;
+  background: white;
+  width: 80%;
+  height: 73%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.nodal-main h2 {
+  margin-top: 25px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }

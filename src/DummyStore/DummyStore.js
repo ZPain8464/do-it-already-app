@@ -90,5 +90,15 @@ export default {
       checked: true,
       folder_id: "4",
     },
+    {
+      id: "5",
+      name: "Visit France",
+      category: "travel",
+      description: "Visit France and drink wine",
+      start_date: "2020-01-03T00:00:00.000Z",
+      end_date: "2022-05-03T00:00:00.000Z",
+      checked: true,
+      folder_id: "4",
+    },
   ],
 };

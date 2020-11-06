@@ -12,7 +12,7 @@ export default class CompletedTodos extends React.Component {
           {completedTodos.map((ct, i) =>
             ct.checked === true ? (
               <li key={i}>
-                <Link to={`/bucket-list-todos/${ct.id}`}>
+                <Link to={`/completed-todos/${ct.id}`}>
                   <h3>{ct.name}</h3>
                   <p>category: {ct.category}</p>
                 </Link>
