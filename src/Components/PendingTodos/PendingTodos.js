@@ -1,6 +1,5 @@
 import React from "react";
 import TodoModal from "../TodoModal/TodoModal";
-import CompletedModal from "../CompletedModal/CompletedModal";
 import DummyStore from "../../DummyStore/DummyStore";
 import { Link } from "react-router-dom";
 
