@@ -29,7 +29,7 @@ export default class CompletedTodos extends React.Component {
             ct.checked === true ? (
               <li key={i}>
                 <Link to={`/completed-todos/${ct.id}`}>
-                  <h3>{ct.name}</h3>
+                  <h3>{ct.title}</h3>
                   <p>category: {ct.category}</p>
                 </Link>
               </li>

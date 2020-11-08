@@ -19,7 +19,7 @@ export default class App extends Component {
     newTodo: "",
     todos: [
       {
-        name: "",
+        title: "",
         id: "",
         checked: false,
       },

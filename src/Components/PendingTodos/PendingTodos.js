@@ -38,7 +38,7 @@ export default class PendingTodos extends React.Component {
             todo.checked === false ? (
               <li key={i}>
                 <Link to={`/bucket-list-todos/${todo.id}`}>
-                  <h3>{todo.name}</h3>
+                  <h3>{todo.title}</h3>
                   <p>category: {todo.category}</p>
                 </Link>
                 <div>

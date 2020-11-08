@@ -22,7 +22,7 @@ export default {
     {
       id: "1",
       category: "productivity",
-      name: "Get productive",
+      title: "Get productive",
       description: "Read LOTR trilogy",
       start_date: "2020-01-03T00:00:00.000Z",
       completed_date: "2020-04-03T00:00:00.000Z",
@@ -31,7 +31,7 @@ export default {
     },
     {
       id: "2",
-      name: "Get fit",
+      title: "Get fit",
       category: "fitness",
       description: "Run first half marathon",
       start_date: "2020-01-03T00:00:00.000Z",
@@ -41,7 +41,7 @@ export default {
     },
     {
       id: "3",
-      name: "Get saving",
+      title: "Get saving",
       category: "finance",
       description: "Save $1,000 before 2022",
       start_date: "2020-01-03T00:00:00.000Z",
@@ -51,7 +51,7 @@ export default {
     },
     {
       id: "4",
-      name: "Get traveling",
+      title: "Get traveling",
       category: "travel",
       description: "Visit friends in Taiwan",
       start_date: "2020-01-03T00:00:00.000Z",
@@ -61,7 +61,7 @@ export default {
     },
     {
       id: "5",
-      name: "Visit France",
+      title: "Visit France",
       category: "travel",
       description: "Visit France and drink wine",
       start_date: "2020-01-03T00:00:00.000Z",

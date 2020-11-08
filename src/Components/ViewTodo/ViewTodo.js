@@ -11,7 +11,7 @@ export default class ViewTodo extends React.Component {
           {viewTodo.map((vt, i) =>
             vt.id === this.props.match.params.id ? (
               <>
-                <h3 key={i}>{vt.name}</h3>
+                <h3 key={i}>{vt.title}</h3>
                 <div>
                   <h4>category: {vt.category}</h4>
                   <label>Check completed:</label>

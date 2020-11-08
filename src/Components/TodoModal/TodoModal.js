@@ -14,7 +14,7 @@ function TodoModal(props) {
       <section className="modal-main">
         {props.match.params.id ? (
           <>
-            <h2>Todo: {todoId.name}</h2>
+            <h2>Todo: {todoId.title}</h2>
 
             <p>Category: {todoId.category}</p>
             <label>Check completed:</label>
