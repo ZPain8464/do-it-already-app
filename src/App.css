@@ -161,6 +161,22 @@ span {
   padding: 15px;
 }
 
+.register-button,
+.logout-button,
+.login-button {
+  border: none;
+  background: none;
+  font-size: 25px;
+  color: #3d405b;
+  padding: 0;
+}
+
+.register-button:hover,
+.logout-button:hover,
+.login-button:hover {
+  color: #e9c46a;
+}
+
 /* Register user page */
 
 .register-form {
