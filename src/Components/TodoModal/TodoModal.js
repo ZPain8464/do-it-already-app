@@ -1,5 +1,4 @@
 import React from "react";
-import DummyStore from "../../DummyStore/DummyStore";
 
 function TodoModal(props) {
   const showHideClassName = props.show
@@ -12,7 +11,8 @@ function TodoModal(props) {
   return (
     <div className={showHideClassName}>
       <section className="modal-main">
-        {props.match.params.id ? (
+        <p>content</p>
+        {/* {props.match.params.id ? (
           <>
             <h2>Todo: {todoId.title}</h2>
 
@@ -22,11 +22,8 @@ function TodoModal(props) {
             <p>Description: {todoId.description}</p>
             <p>
               Created on: {new Date(todoId.start_date).toLocaleDateString()}
-            </p>
-          </>
-        ) : (
-          ""
-        )}
+            </p> */}
+        ) : ( "" )}
         <button onClick={props.handleClose}>Close</button>
       </section>
     </div>

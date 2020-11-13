@@ -1,7 +1,7 @@
 import React from "react";
 import TodoModal from "../TodoModal/TodoModal";
-import DummyStore from "../../DummyStore/DummyStore";
 import { Link } from "react-router-dom";
+import BackButton from "../BackButton/BackButton";
 
 export default class PendingTodos extends React.Component {
   state = {

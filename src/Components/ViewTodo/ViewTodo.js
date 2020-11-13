@@ -1,6 +1,29 @@
 import React from "react";
+import Config from "../../Config/Config";
 
 export default class ViewTodo extends React.Component {
+  handleDelete = (todoid, cb) => {
+    this.props.history.goBack("/bucket-list-todos");
+    fetch(`${Config.API_BASE_URL}/api/todos/${todoid}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res;
+      })
+      .then(() => {
+        cb(todoid);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   render() {
     const viewTodo = this.props.todos;
     return (
@@ -22,6 +45,18 @@ export default class ViewTodo extends React.Component {
                     Created on
                     {new Date(vt.start_date).toLocaleDateString()}
                   </p>
+                </div>
+                <div>
+                  <button
+                    onClick={(e) =>
+                      this.handleDelete(
+                        this.props.match.params.id,
+                        this.props.deleteTodo
+                      )
+                    }
+                  >
+                    Delete
+                  </button>
                 </div>
               </>
             ) : (

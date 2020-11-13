@@ -28,6 +28,13 @@ export default class App extends Component {
     });
   };
 
+  deleteTodo = (todoid) => {
+    const newTodos = this.state.todos.filter((tid) => tid.id !== todoid);
+    this.setState({
+      todos: newTodos,
+    });
+  };
+
   componentDidMount() {
     fetch(`${Config.API_BASE_URL}/api/todos`)
       .then((res) => res.json())
@@ -73,7 +80,13 @@ export default class App extends Component {
               "/completed-todos",
               "/completed-todos/:id",
             ]}
-            render={(props) => <BucketListTodos {...props} {...this.state} />}
+            render={(props) => (
+              <BucketListTodos
+                deleteTodo={this.deleteTodo}
+                {...props}
+                {...this.state}
+              />
+            )}
           />
           <Route exact path="/" component={Features} />
           <Route exact path="/" component={WhyUseDIA} />
