@@ -21,7 +21,8 @@ export default class PendingTodos extends React.Component {
   };
 
   render() {
-    const todos = DummyStore.todos;
+    // DummyStore.todos;
+    const todos = this.props.todos;
     const id = this.props.match.params.id;
     const todoId = todos[id];
 

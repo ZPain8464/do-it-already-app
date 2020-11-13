@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BackButton from "../BackButton/BackButton";
 import DummyStore from "../../DummyStore/DummyStore";
 
 export default class AddTodoForm extends React.Component {
@@ -22,11 +23,11 @@ export default class AddTodoForm extends React.Component {
               </option>
             ))}
           </select>
-
           <button>
             <Link to="/bucket-list-todos"> Add Todo</Link>
           </button>
         </form>
+        <BackButton {...this.props} />
       </div>
     );
   }

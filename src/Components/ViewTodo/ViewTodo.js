@@ -3,13 +3,13 @@ import DummyStore from "../../DummyStore/DummyStore";
 
 export default class ViewTodo extends React.Component {
   render() {
-    const viewTodo = DummyStore.todos;
+    const viewTodo = this.props.todos;
     return (
       <div className="view-todo">
         <h2>View Todo</h2>
         <div className="view-todo-task">
           {viewTodo.map((vt, i) =>
-            vt.id === this.props.match.params.id ? (
+            vt.id === Number(this.props.match.params.id) ? (
               <>
                 <h3 key={i}>{vt.title}</h3>
                 <div>

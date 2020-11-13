@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
 
+import Config from "./Config/Config";
 import Header from "./Components/Header/Header";
 import Features from "./Components/Features/Features";
 import WhyUseDIA from "./Components/WhyUseDIA/WhyUseDIA";
@@ -19,17 +20,27 @@ export default class App extends Component {
     newTodo: "",
     todos: [
       {
-        title: "",
-        id: "",
-        checked: false,
+        todos: [],
+        // category: "",
+        // categor_id: "",
+        // title: "",
+        // id: "",
+        // description: "",
+        // checked: false,
       },
     ],
   };
 
+  componentDidMount() {
+    fetch(`${Config.API_BASE_URL}/api/todos`)
+      .then((res) => res.json())
+      .then((todos) => this.setState({ todos }));
+  }
+
   render() {
     return (
       <div className="App">
-        <Nav />
+        <Route path="/" component={Nav} />
         <Route exact path="/about" component={About} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
@@ -56,7 +67,7 @@ export default class App extends Component {
               "/completed-todos",
               "/completed-todos/:id",
             ]}
-            component={BucketListTodos}
+            render={(props) => <BucketListTodos {...props} {...this.state} />}
           />
           <Route exact path="/" component={Features} />
           <Route exact path="/" component={WhyUseDIA} />

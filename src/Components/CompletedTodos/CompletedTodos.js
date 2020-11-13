@@ -20,7 +20,8 @@ export default class CompletedTodos extends React.Component {
   };
 
   render() {
-    const completedTodos = DummyStore.todos;
+    const completedTodos = this.props.todos;
+
     return (
       <div className="completed-todos">
         <h2>Completed Todos</h2>

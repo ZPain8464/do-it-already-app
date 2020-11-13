@@ -1,7 +1,6 @@
 import React from "react";
 import AuthAPIService from "../../Services/AuthAPIService";
 import TokenService from "../../Services/TokenService";
-import Config from "../../Config/Config";
 
 import { Link } from "react-router-dom";
 
@@ -36,9 +35,9 @@ export default class Login extends React.Component {
           {this.state.error && <p className="error">{this.state.error}</p>}
           <h1>Log in to Your Account</h1>
           <label>Username</label>
-          <input name="username" type="text" />
+          <input name="username" type="text" defaultValue="demo" />
           <label>Password</label>
-          <input type="text" name="password" />
+          <input type="password" name="password" defaultValue="D#mo1234" />
           <button type="submit">Sign in</button>
         </form>
         <div>
