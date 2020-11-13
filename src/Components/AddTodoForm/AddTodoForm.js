@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
-import DummyStore from "../../DummyStore/DummyStore";
 
 export default class AddTodoForm extends React.Component {
+  state = {
+    selCategory: this.props.match.params.category,
+  };
+
   render() {
-    const cat = this.props.match ? this.props.match.params.category : 0;
-    const categories = DummyStore.categories;
+    const categories = this.props.categories;
 
     return (
       <div className="add-todo">
@@ -18,9 +20,7 @@ export default class AddTodoForm extends React.Component {
           <input type="text" />
           <select name="category-dropdown" id="category-dropdown">
             {categories.map((c, i) => (
-              <option key={i} defaultValue={cat}>
-                {c.category}
-              </option>
+              <option key={i}>{c.category}</option>
             ))}
           </select>
           <button>

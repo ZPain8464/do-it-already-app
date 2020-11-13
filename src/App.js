@@ -29,12 +29,16 @@ export default class App extends Component {
         // checked: false,
       },
     ],
+    categories: [],
   };
 
   componentDidMount() {
     fetch(`${Config.API_BASE_URL}/api/todos`)
       .then((res) => res.json())
       .then((todos) => this.setState({ todos }));
+    fetch(`${Config.API_BASE_URL}/api/categories`)
+      .then((res) => res.json())
+      .then((categories) => this.setState({ categories }));
   }
 
   render() {
@@ -55,7 +59,7 @@ export default class App extends Component {
         <Route
           exact
           path={["/add-todo", "/add-todo/:category"]}
-          component={AddTodoForm}
+          render={(props) => <AddTodoForm {...props} {...this.state} />}
         />
 
         <main>

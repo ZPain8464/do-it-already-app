@@ -5,7 +5,7 @@ function TodoModal(props) {
   const showHideClassName = props.show
     ? "modal display-block"
     : "modal display-none";
-  const viewTodo = DummyStore.todos;
+  const viewTodo = props.todos;
   const id = parseInt(props.match.params.id) - 1;
   const todoId = viewTodo[id];
 
