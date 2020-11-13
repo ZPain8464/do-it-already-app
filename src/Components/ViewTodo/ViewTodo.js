@@ -1,5 +1,4 @@
 import React from "react";
-import DummyStore from "../../DummyStore/DummyStore";
 
 export default class ViewTodo extends React.Component {
   render() {

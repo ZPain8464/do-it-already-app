@@ -18,18 +18,14 @@ import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 export default class App extends Component {
   state = {
     newTodo: "",
-    todos: [
-      {
-        todos: [],
-        // category: "",
-        // categor_id: "",
-        // title: "",
-        // id: "",
-        // description: "",
-        // checked: false,
-      },
-    ],
+    todos: [],
     categories: [],
+  };
+
+  createTodo = (todo) => {
+    this.setState({
+      todos: [...this.state.todos, todo],
+    });
   };
 
   componentDidMount() {
@@ -59,7 +55,13 @@ export default class App extends Component {
         <Route
           exact
           path={["/add-todo", "/add-todo/:category"]}
-          render={(props) => <AddTodoForm {...props} {...this.state} />}
+          render={(props) => (
+            <AddTodoForm
+              {...props}
+              createTodo={this.createTodo}
+              {...this.state}
+            />
+          )}
         />
 
         <main>
