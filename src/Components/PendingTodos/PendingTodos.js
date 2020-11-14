@@ -1,7 +1,6 @@
 import React from "react";
 import TodoModal from "../TodoModal/TodoModal";
 import { Link } from "react-router-dom";
-import BackButton from "../BackButton/BackButton";
 
 export default class PendingTodos extends React.Component {
   state = {
@@ -21,10 +20,8 @@ export default class PendingTodos extends React.Component {
   };
 
   render() {
-    // DummyStore.todos;
     const todos = this.props.todos;
     const id = this.props.match.params.id;
-    const todoId = todos[id];
 
     return (
       <div className="pending-todos">

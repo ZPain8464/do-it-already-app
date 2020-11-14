@@ -14,6 +14,7 @@ import Nav from "./Components/Nav/Nav";
 import CategoriesPage from "./Components/CategoriesPage/CategoriesPage";
 import BucketListTodos from "./Components/BucketListTodos/BucketListTodos";
 import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
+import EditTodo from "./Components/EditTodos/EditTodo";
 
 export default class App extends Component {
   state = {
@@ -32,6 +33,14 @@ export default class App extends Component {
     const newTodos = this.state.todos.filter((tid) => tid.id !== todoid);
     this.setState({
       todos: newTodos,
+    });
+  };
+
+  updateTodo = (editedTodo) => {
+    this.setState({
+      todos: this.state.todos.map((t) =>
+        t.id !== editedTodo.id ? t : editedTodo
+      ),
     });
   };
 
@@ -86,6 +95,13 @@ export default class App extends Component {
                 {...props}
                 {...this.state}
               />
+            )}
+          />
+          <Route
+            exact
+            path="/edit-todo/:id"
+            render={(props) => (
+              <EditTodo {...props} updateTodo={this.updateTodo} />
             )}
           />
           <Route exact path="/" component={Features} />

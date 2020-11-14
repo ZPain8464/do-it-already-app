@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DummyStore from "../../DummyStore/DummyStore";
 
 export default class CompletedTodos extends React.Component {
   state = {
