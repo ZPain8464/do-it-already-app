@@ -1,14 +1,15 @@
 import React from "react";
 import BackButton from "../BackButton/BackButton";
 import Config from "../../Config/Config";
+import ValidationError from "../Validation/ValidationError";
 
 export default class AddTodoForm extends React.Component {
   state = {
     selCategory: this.props.match.params.category,
-    // todo: {
-    //   title: "",
-    //   touched: false,
-    // },
+    title: {
+      value: "",
+      touched: false,
+    },
   };
 
   handleSubmit = (e) => {
@@ -49,17 +50,27 @@ export default class AddTodoForm extends React.Component {
       .catch((error) => this.setState({ error }));
   };
 
-  // getTitle = (title) => {
-  //   this.setState({
-  //     todo: {
-  //       title: title,
-  //       touched: true,
-  //     },
-  //   });
-  // };
+  validateTitle = () => {
+    const todoTitle = this.state.title.value.trim();
+    if (todoTitle.name === 0) {
+      return "Name your todo!";
+    } else if (todoTitle.length < 3) {
+      return "Your todo must be at least 3 characters long";
+    }
+  };
+
+  updateTitle = (name) => {
+    this.setState({
+      title: {
+        value: name,
+        touched: true,
+      },
+    });
+  };
 
   render() {
     const categories = this.props.categories;
+    const titleError = this.validateTitle();
 
     return (
       <div className="add-todo">
@@ -67,10 +78,11 @@ export default class AddTodoForm extends React.Component {
           <h2>Create a Bucket List Todo</h2>
           <label>Name your bucket list todo:</label>
           <input
+            onChange={(e) => this.updateTitle(e.target.value)}
             type="text"
             name="title"
-            // onChange={(e) => this.getTitle(e.target.value)}
           />
+          {this.state.title.touched && <ValidationError message={titleError} />}
           <label>Description:</label>
           <input type="text" className="description" name="description" />
           <select name="category_id" id="category-dropdown">
@@ -81,7 +93,9 @@ export default class AddTodoForm extends React.Component {
             ))}
           </select>
 
-          <button type="submit">Add Todo</button>
+          <button disabled={this.validateTitle()} type="submit">
+            Add Todo
+          </button>
         </form>
         <BackButton {...this.props} />
       </div>

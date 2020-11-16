@@ -3,14 +3,6 @@ import Config from "../../Config/Config";
 import { Link } from "react-router-dom";
 
 export default class ViewTodo extends React.Component {
-  state = {
-    checked: false,
-  };
-
-  handleCheck = (e) => {
-    console.log(e);
-  };
-
   handleDelete = (todoid, cb) => {
     this.props.history.goBack("/bucket-list-todos");
     fetch(`${Config.API_BASE_URL}/api/todos/${todoid}`, {
@@ -45,12 +37,6 @@ export default class ViewTodo extends React.Component {
                 <h3 key={i}>{vt.title}</h3>
                 <div>
                   <h4>category: {vt.category}</h4>
-                  <label>Check completed:</label>
-                  <input
-                    onChange={(e) => this.handleCheck(e)}
-                    type="checkbox"
-                    name="checked"
-                  />
                   <p key={i}>Description: {vt.description}</p>
                 </div>
                 <div>

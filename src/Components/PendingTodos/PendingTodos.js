@@ -1,10 +1,44 @@
 import React from "react";
 import TodoModal from "../TodoModal/TodoModal";
 import { Link } from "react-router-dom";
+import Config from "../../Config/Config";
 
 export default class PendingTodos extends React.Component {
   state = {
     show: false,
+    checked: false,
+    id: "",
+  };
+
+  handleCheck = (e, todoid) => {
+    this.setState({
+      checked: e.target.checked,
+      id: todoid,
+    });
+  };
+
+  handleSubmit = (e) => {
+    // e.preventDefault();
+    const { id, checked } = this.state;
+    const completedTodo = { id, checked };
+    this.props.completeTodo(completedTodo);
+    fetch(`${Config.API_BASE_URL}/api/todos/${completedTodo.id}`, {
+      method: "PUT",
+      body: JSON.stringify(completedTodo),
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
+        return res;
+      })
+      .then(() => {
+        this.props.completeTodo(completedTodo);
+        this.props.history.push("/bucket-list-todos");
+      });
   };
 
   showModal = () => {
@@ -21,7 +55,6 @@ export default class PendingTodos extends React.Component {
 
   render() {
     const todos = this.props.todos;
-    const id = this.props.match.params.id;
 
     return (
       <div className="pending-todos">
@@ -39,6 +72,25 @@ export default class PendingTodos extends React.Component {
                   <h3>{todo.title}</h3>
                   <p>category: {todo.category}</p>
                 </Link>
+
+                <form
+                  className={
+                    todo.id === Number(this.props.match.params.id)
+                      ? "active-form"
+                      : "inactive-form"
+                  }
+                  onSubmit={(e) => this.handleSubmit(e)}
+                >
+                  <div>
+                    <label>Completed:</label>
+                    <input
+                      onChange={(e) => this.handleCheck(e, todo.id)}
+                      type="checkbox"
+                      name="checked"
+                    />
+                  </div>
+                  <button type="submit">Submit</button>
+                </form>
                 <div>
                   <TodoModal
                     {...this.props}

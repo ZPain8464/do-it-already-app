@@ -15,10 +15,10 @@ import CategoriesPage from "./Components/CategoriesPage/CategoriesPage";
 import BucketListTodos from "./Components/BucketListTodos/BucketListTodos";
 import AddTodoForm from "./Components/AddTodoForm/AddTodoForm";
 import EditTodo from "./Components/EditTodos/EditTodo";
+import ErrorPage from "./Components/ErrorBoundary/ErrorPage";
 
 export default class App extends Component {
   state = {
-    newTodo: "",
     todos: [],
     categories: [],
   };
@@ -44,6 +44,14 @@ export default class App extends Component {
     });
   };
 
+  completeTodo = (completedTodo) => {
+    this.setState({
+      todos: this.state.todos.map((t) =>
+        t.id !== completedTodo ? t : completedTodo
+      ),
+    });
+  };
+
   componentDidMount() {
     fetch(`${Config.API_BASE_URL}/api/todos`)
       .then((res) => res.json())
@@ -55,60 +63,63 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Route path="/" component={Nav} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/" component={Header} />
+      <ErrorPage>
+        <div className="App">
+          <Route path="/" component={Nav} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/" component={Header} />
 
-        <Route
-          exact
-          path="/bucket-list-categories"
-          component={CategoriesPage}
-        />
-
-        <Route
-          exact
-          path={["/add-todo", "/add-todo/:category"]}
-          render={(props) => (
-            <AddTodoForm
-              {...props}
-              createTodo={this.createTodo}
-              {...this.state}
-            />
-          )}
-        />
-
-        <main>
           <Route
             exact
-            path={[
-              "/bucket-list-todos",
-              "/bucket-list-todos/:id",
-              "/completed-todos",
-              "/completed-todos/:id",
-            ]}
+            path="/bucket-list-categories"
+            component={CategoriesPage}
+          />
+
+          <Route
+            exact
+            path={["/add-todo", "/add-todo/:category"]}
             render={(props) => (
-              <BucketListTodos
-                deleteTodo={this.deleteTodo}
+              <AddTodoForm
                 {...props}
+                createTodo={this.createTodo}
                 {...this.state}
               />
             )}
           />
-          <Route
-            exact
-            path="/edit-todo/:id"
-            render={(props) => (
-              <EditTodo {...props} updateTodo={this.updateTodo} />
-            )}
-          />
-          <Route exact path="/" component={Features} />
-          <Route exact path="/" component={WhyUseDIA} />
-          <Route path="/" component={Footer} />
-        </main>
-      </div>
+
+          <main>
+            <Route
+              exact
+              path={[
+                "/bucket-list-todos",
+                "/bucket-list-todos/:id",
+                "/completed-todos",
+                "/completed-todos/:id",
+              ]}
+              render={(props) => (
+                <BucketListTodos
+                  deleteTodo={this.deleteTodo}
+                  completeTodo={this.completeTodo}
+                  {...props}
+                  {...this.state}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/edit-todo/:id"
+              render={(props) => (
+                <EditTodo {...props} updateTodo={this.updateTodo} />
+              )}
+            />
+            <Route exact path="/" component={Features} />
+            <Route exact path="/" component={WhyUseDIA} />
+            <Route path="/" component={Footer} />
+          </main>
+        </div>
+      </ErrorPage>
     );
   }
 }
