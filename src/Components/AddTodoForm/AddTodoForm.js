@@ -1,9 +1,12 @@
 import React from "react";
 import BackButton from "../BackButton/BackButton";
 import Config from "../../Config/Config";
+import Context from "../../Context/Context";
 import ValidationError from "../Validation/ValidationError";
 
 export default class AddTodoForm extends React.Component {
+  static contextType = Context;
+
   state = {
     selCategory: this.props.match.params.category,
     title: {
@@ -19,10 +22,10 @@ export default class AddTodoForm extends React.Component {
     const category = this.state.selCategory;
     const category_id = e.target.category_id.value;
     const checked = false;
-    const user_id = 5;
+    const user_id = 1;
     const start_date = new Date().toISOString();
 
-    fetch(`${Config.API_BASE_URL}/api/todos`, {
+    fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -44,7 +47,7 @@ export default class AddTodoForm extends React.Component {
         return res.json();
       })
       .then((todo) => {
-        this.props.createTodo(todo);
+        this.context.createTodo(todo);
         this.props.history.push("/bucket-list-todos");
       })
       .catch((error) => this.setState({ error }));
@@ -56,6 +59,8 @@ export default class AddTodoForm extends React.Component {
       return "Name your todo!";
     } else if (todoTitle.length < 3) {
       return "Your todo must be at least 3 characters long";
+    } else if (todoTitle.length > 30) {
+      return "Your todo cannot exceed 30 characters";
     }
   };
 
@@ -69,7 +74,7 @@ export default class AddTodoForm extends React.Component {
   };
 
   render() {
-    const categories = this.props.categories;
+    const categories = this.context.categories;
     const titleError = this.validateTitle();
 
     return (
@@ -87,7 +92,15 @@ export default class AddTodoForm extends React.Component {
           <input type="text" className="description" name="description" />
           <select name="category_id" id="category-dropdown">
             {categories.map((c, i) => (
-              <option key={i} value={c.id}>
+              <option
+                key={i}
+                value={c.id}
+                selected={
+                  c.category === this.props.match.params.category
+                    ? "selected"
+                    : false
+                }
+              >
                 {c.category}
               </option>
             ))}

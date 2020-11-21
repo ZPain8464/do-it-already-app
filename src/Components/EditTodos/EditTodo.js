@@ -1,16 +1,23 @@
 import React from "react";
 import Config from "../../Config/Config";
+import Context from "../../Context/Context";
 
 export default class EditTodo extends React.Component {
+  static contextType = Context;
   state = {
     id: "",
     title: "",
     description: "",
+    category: "",
+    category_id: "",
+    checked: "",
+    user_id: "",
+    start_date: "",
   };
 
   componentDidMount() {
     const todoId = Number(this.props.match.params.id);
-    fetch(`${Config.API_BASE_URL}/api/todos/${todoId}`, {
+    fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos/${todoId}`, {
       method: "GET",
     })
       .then((res) => {
@@ -22,6 +29,11 @@ export default class EditTodo extends React.Component {
           id: data.id,
           title: data.title,
           description: data.description,
+          category: data.category,
+          category_id: data.category_id,
+          checked: data.checked,
+          user_id: data.user_id,
+          start_date: data.start_date,
         });
       })
       .catch((error) => {
@@ -31,10 +43,28 @@ export default class EditTodo extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { id, title, description } = this.state;
-    const newTodo = { id, title, description };
+    const {
+      id,
+      title,
+      description,
+      category,
+      category_id,
+      checked,
+      user_id,
+      start_date,
+    } = this.state;
+    const newTodo = {
+      id,
+      title,
+      description,
+      category,
+      category_id,
+      checked,
+      user_id,
+      start_date,
+    };
 
-    fetch(`${Config.API_BASE_URL}/api/todos/${newTodo.id}`, {
+    fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos/${newTodo.id}`, {
       method: "PATCH",
       body: JSON.stringify(newTodo),
       headers: {
@@ -49,11 +79,12 @@ export default class EditTodo extends React.Component {
       })
       .then(() => {
         this.resetFields();
-        this.props.updateTodo(newTodo);
+        this.context.updateTodo(newTodo);
         this.props.history.push(
           `/bucket-list-todos/${this.props.match.params.id}`
         );
-      });
+      })
+      .catch((error) => this.setState({ error }));
   };
 
   resetFields = () => {

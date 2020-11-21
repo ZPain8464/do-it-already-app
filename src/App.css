@@ -256,25 +256,78 @@ h2 {
 
 /* BucketListTodos / main todos page */
 
+.productivity {
+  background-color: #48cae4;
+}
+
+.fitness {
+  background-color: #e76f51;
+}
+
+.finance {
+  background-color: #e9c46a;
+}
+
+.travel {
+  background-color: #64dfdf;
+}
+
+.productivity,
+.fitness,
+.finance,
+.travel h3 {
+  text-decoration: none;
+}
+
+.pending-todos ul a {
+  text-decoration: none;
+}
+
+.completed-todos ul a {
+  text-decoration: none;
+}
+
+.completed-todos,
+.pending-todos a:link {
+  color: #3d405b;
+}
+
+.completed-todos a:visited {
+  color: #3d405b;
+}
+
+.checkmark-todos {
+  float: right;
+}
+
+.pending-todos a:visited {
+  color: #3d405b;
+}
+
 .main-todos {
   text-align: center;
   display: flex;
 }
 
-.completed-todos,
-.pending-todos {
+.TodoList,
+.view-todo {
   flex: 1;
-  border-right: grey 2px solid;
 }
+/* .completed-todos,
+.pending-todos,
+.view-todo {
+  flex: 1;
+} */
 
 .inactive-form {
   display: none;
 }
 
 ul li {
-  padding: 0;
+  padding: 10px;
   list-style-type: none;
-  border: grey 2px solid;
+  border-radius: 20px;
+  /* border: grey 2px solid; */
   margin: 10px;
   background-color: #e5e5e5;
 }
@@ -284,16 +337,35 @@ ul {
 }
 
 .view-todo {
-  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .view-todo-task {
+  border: grey 2px solid;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 30px;
+  width: 85%;
+}
+
+.todo-textbox {
+  padding: 5px;
+  border: grey 2px solid;
+  border-radius: 10px;
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+
+/* .view-todo-task {
   border: grey 2px solid;
   background-color: #e5e5e5;
   width: 75%;
   margin: 0 auto;
   padding: 25px;
-}
+} */
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .main-todos {

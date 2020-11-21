@@ -7,7 +7,6 @@ export default class Register extends React.Component {
   };
 
   handleSubmit = (e) => {
-    console.log("submit worked");
     e.preventDefault();
     const { name, username, password, confirmPassword } = e.target;
     this.setState({ error: null });
