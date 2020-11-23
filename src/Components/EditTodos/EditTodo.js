@@ -16,7 +16,10 @@ export default class EditTodo extends React.Component {
   };
 
   componentDidMount() {
-    const todoId = Number(this.props.match.params.id);
+    const todoId =
+      this.props.match && this.props.match.params.id
+        ? Number(this.props.match.params.id)
+        : 0;
     fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos/${todoId}`, {
       method: "GET",
     })

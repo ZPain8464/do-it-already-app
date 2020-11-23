@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Nav from "../Nav/Nav";
+import Footer from "../Footer/Footer";
 import { BrowserRouter } from "react-router-dom";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <BrowserRouter>
-      <Nav />
+      <Footer />
     </BrowserRouter>,
     div
   );

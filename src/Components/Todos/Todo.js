@@ -60,7 +60,7 @@ export default class Todo extends React.Component {
               </p>
             </div>
             <div>
-              <Link to={`/edit-todo/${this.props.match.params.id}`}>
+              <Link to={`/edit-todo/${todo.id}`}>
                 <button>Edit</button>
               </Link>
               <button

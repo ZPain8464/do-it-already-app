@@ -7,8 +7,17 @@ import ValidationError from "../Validation/ValidationError";
 export default class AddTodoForm extends React.Component {
   static contextType = Context;
 
+  static defaultProps = {
+    match: {
+      params: {
+        category: "",
+      },
+    },
+  };
+
   state = {
     selCategory: this.props.match.params.category,
+    category_id: "",
     title: {
       value: "",
       touched: false,
@@ -73,6 +82,15 @@ export default class AddTodoForm extends React.Component {
     });
   };
 
+  changeCategory = (e) => {
+    const categoryId = Number(e.target.value);
+    const category = this.context.categories.find((c) => c.id === categoryId);
+    this.setState({
+      selCategory: category.category,
+      category_id: category.id,
+    });
+  };
+
   render() {
     const categories = this.context.categories;
     const titleError = this.validateTitle();
@@ -90,7 +108,11 @@ export default class AddTodoForm extends React.Component {
           {this.state.title.touched && <ValidationError message={titleError} />}
           <label>Description:</label>
           <input type="text" className="description" name="description" />
-          <select name="category_id" id="category-dropdown">
+          <select
+            onChange={(e) => this.changeCategory(e)}
+            name="category_id"
+            id="category-dropdown"
+          >
             {categories.map((c, i) => (
               <option
                 key={i}
