@@ -7,7 +7,7 @@ it("renders without crashing", () => {
   const div = document.createElement("div");
   ReactDOM.render(
     <BrowserRouter>
-      <Todo />
+      <Todo user_id={0} />
     </BrowserRouter>,
     div
   );

@@ -1,7 +1,41 @@
 import React from "react";
+import Context from "../../Context/Context";
+import Config from "../../Config/Config";
+import TokenService from "../../Services/TokenService";
 import { Link } from "react-router-dom";
 
 export default class CategoriesPage extends React.Component {
+  static contextType = Context;
+
+  componentDidMount() {
+    fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((todos) => this.context.setLoggedInUserTodos(todos));
+    fetch(`${Config.REACT_APP_API_BASE_URL}/api/categories`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((categories) => this.context.setCategories(categories));
+    fetch(`${Config.REACT_APP_API_BASE_URL}/api/users`, {
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((user) => {
+        this.context.setUser(user);
+      });
+  }
+
   render() {
     return (
       <div className="categories-body">

@@ -2,6 +2,7 @@ import React from "react";
 import BackButton from "../BackButton/BackButton";
 import Config from "../../Config/Config";
 import Context from "../../Context/Context";
+import TokenService from "../../Services/TokenService";
 import ValidationError from "../Validation/ValidationError";
 
 export default class AddTodoForm extends React.Component {
@@ -31,13 +32,13 @@ export default class AddTodoForm extends React.Component {
     const category = this.state.selCategory;
     const category_id = e.target.category_id.value;
     const checked = false;
-    const user_id = 1;
-    const start_date = new Date().toISOString();
+    const user_id = this.context.user.user_id;
 
     fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
         title: title,
@@ -46,7 +47,6 @@ export default class AddTodoForm extends React.Component {
         category_id: category_id,
         checked: checked,
         user_id: user_id,
-        start_date: start_date,
       }),
     })
       .then((res) => {

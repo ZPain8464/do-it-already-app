@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Context from "../../Context/Context";
 import Config from "../../Config/Config";
+import TokenService from "../../Services/TokenService";
 
 function TodoModal(props) {
   const context = useContext(Context);
@@ -11,6 +12,7 @@ function TodoModal(props) {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {

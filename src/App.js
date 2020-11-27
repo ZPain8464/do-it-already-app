@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 
 import Config from "./Config/Config";
 import Context from "./Context/Context";
+
 import Header from "./Components/Header/Header";
 import Features from "./Components/Features/Features";
 import WhyUseDIA from "./Components/WhyUseDIA/WhyUseDIA";
@@ -18,9 +19,14 @@ import Todo from "./Components/Todos/Todo";
 import TodoList from "./Components/TodoList/TodoList";
 import EditTodo from "./Components/EditTodos/EditTodo";
 import ErrorPage from "./Components/ErrorBoundary/ErrorPage";
+import TokenService from "./Services/TokenService";
 
 export default class App extends Component {
   state = {
+    user: {
+      username: "",
+      user_id: "",
+    },
     todos: [],
     categories: [],
     toggleComplete: (id) => {
@@ -35,6 +41,7 @@ export default class App extends Component {
               body: JSON.stringify(todoCheck),
               headers: {
                 "content-type": "application/json",
+                Authorization: `Bearer ${TokenService.getAuthToken()}`,
               },
             }).then((res) => {
               if (!res.ok) {
@@ -47,6 +54,33 @@ export default class App extends Component {
         }),
       });
     },
+  };
+
+  handleLogout = () => {
+    TokenService.clearAuthToken();
+    this.setState({
+      todos: [],
+      categories: [],
+    });
+  };
+
+  setLoggedInUserTodos = (todos) => {
+    this.setState({
+      todos: todos,
+    });
+  };
+
+  setUser = (user) => {
+    this.setState({
+      user: {
+        username: user.username,
+        user_id: user.id,
+      },
+    });
+  };
+
+  setCategories = (categories) => {
+    this.setState({ categories });
   };
 
   createTodo = (todo) => {
@@ -70,19 +104,15 @@ export default class App extends Component {
     });
   };
 
-  componentDidMount() {
-    fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos`)
-      .then((res) => res.json())
-      .then((todos) => this.setState({ todos }));
-    fetch(`${Config.REACT_APP_API_BASE_URL}/api/categories`)
-      .then((res) => res.json())
-      .then((categories) => this.setState({ categories }));
-  }
-
   render() {
     const contextValue = {
       todos: this.state.todos,
       categories: this.state.categories,
+      user: this.state.user,
+      setLoggedInUserTodos: this.setLoggedInUserTodos,
+      setUser: this.setUser,
+      setCategories: this.setCategories,
+      handleLogout: this.handleLogout,
       createTodo: this.createTodo,
       deleteTodo: this.deleteTodo,
       updateTodo: this.updateTodo,

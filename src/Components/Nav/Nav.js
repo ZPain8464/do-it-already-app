@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import TokenService from "../../Services/TokenService";
+import Context from "../../Context/Context";
 
 export default class Nav extends React.Component {
+  static contextType = Context;
+
   logout = () => {
-    TokenService.clearAuthToken();
-    // this.props.history.push("/");
+    this.context.handleLogout();
+    this.props.history.push("/");
   };
 
   render() {
@@ -19,15 +22,13 @@ export default class Nav extends React.Component {
           <Link to="/about">About</Link>
 
           {TokenService.hasAuthToken() ? (
-            <Link to="/">
-              <button
-                type="submit"
-                className="logout-button"
-                onClick={() => this.logout()}
-              >
-                Log out
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="logout-button"
+              onClick={() => this.logout()}
+            >
+              Log out
+            </button>
           ) : (
             <>
               <Link to="/register">

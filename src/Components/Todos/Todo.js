@@ -2,6 +2,7 @@ import React from "react";
 import Context from "../../Context/Context";
 import { Link } from "react-router-dom";
 import Config from "../../Config/Config";
+import TokenService from "../../Services/TokenService";
 
 export default class Todo extends React.Component {
   static contextType = Context;
@@ -11,6 +12,7 @@ export default class Todo extends React.Component {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {
@@ -33,6 +35,7 @@ export default class Todo extends React.Component {
       this.context.todos.find(
         (todo) => todo.id === Number(this.props.match.params.id)
       ) || {};
+
     return (
       <React.Fragment>
         <div className="view-todo-task">
@@ -83,9 +86,6 @@ export default class Todo extends React.Component {
             </div>
           </div>
         </div>
-        <Link to="/bucket-list-categories">
-          <button>Create a todo</button>
-        </Link>
       </React.Fragment>
     );
   }

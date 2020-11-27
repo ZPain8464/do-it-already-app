@@ -67,6 +67,9 @@ export default class TodoList extends React.Component {
                 </li>
               ))}
           </ul>
+          <button>
+            <Link to="/bucket-list-categories">Create a todo</Link>
+          </button>
         </div>
       </div>
     );

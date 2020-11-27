@@ -1,6 +1,7 @@
 import React from "react";
 import Config from "../../Config/Config";
 import Context from "../../Context/Context";
+import TokenService from "../../Services/TokenService";
 
 export default class EditTodo extends React.Component {
   static contextType = Context;
@@ -21,7 +22,10 @@ export default class EditTodo extends React.Component {
         ? Number(this.props.match.params.id)
         : 0;
     fetch(`${Config.REACT_APP_API_BASE_URL}/api/todos/${todoId}`, {
-      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
+      },
     })
       .then((res) => {
         if (!res.ok) return res.json().then((error) => Promise.reject(error));
@@ -72,6 +76,7 @@ export default class EditTodo extends React.Component {
       body: JSON.stringify(newTodo),
       headers: {
         "content-type": "application/json",
+        Authorization: `Bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {
