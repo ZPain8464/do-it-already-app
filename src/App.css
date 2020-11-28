@@ -372,17 +372,7 @@ ul {
     display: flex;
     flex-direction: column;
   }
-
-  /* .completed-todos {
-    display: none;
-  } */
 }
-
-/* @media screen and (min-width: 427px) {
-  .completed-view {
-    display: none;
-  }
-} */
 
 @media screen and (min-width: 320px) and (max-width: 427px) {
   .view-todo {
@@ -390,6 +380,10 @@ ul {
   }
 
   .view-todo-desktop {
+    display: none;
+  }
+
+  .create-todo-desktop {
     display: none;
   }
 }

@@ -14,6 +14,7 @@ export default class Register extends React.Component {
       name: name.value,
       username: username.value,
       password: password.value,
+      confirmPassword: confirmPassword.value,
     })
       .then((user) => {
         this.props.history.push("/login");
@@ -41,9 +42,9 @@ export default class Register extends React.Component {
           </label>
           <input type="text" name="username" />
           <label className="register-password">Password</label>
-          <input type="text" name="password" />
+          <input type="password" name="password" />
           <label>Confirm Password</label>
-          <input type="text" name="confirmPassword" />
+          <input type="password" name="confirmPassword" />
           <button type="submit">Submit</button>
         </form>
       </div>
