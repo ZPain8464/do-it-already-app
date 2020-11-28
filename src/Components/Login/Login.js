@@ -35,9 +35,9 @@ export default class Login extends React.Component {
           {this.state.error && <p className="error">{this.state.error}</p>}
           <h1>Log in to Your Account</h1>
           <label>Username</label>
-          <input name="username" type="text" defaultValue="demo" />
+          <input name="username" type="text" />
           <label>Password</label>
-          <input type="password" name="password" defaultValue="D#mo1234" />
+          <input type="password" name="password" />
           <button type="submit">Sign in</button>
         </form>
         <div>
