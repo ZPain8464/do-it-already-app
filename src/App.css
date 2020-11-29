@@ -80,16 +80,56 @@ span {
   padding: 150px;
 }
 
-.homepage-features {
+.features-p {
+  width: 45%;
   border: #e9c46a 2px solid;
-  padding: 80px;
+  border-radius: 20px;
+  padding: 50px;
   margin: 15px;
+  color: #3d405b;
 }
 
+.homepage-features {
+  display: flex;
+}
+
+.features-check,
+.features-update,
+.features-star {
+  font-size: 80px;
+  color: #3d405b;
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+  .homepage-features {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #e76f51;
+    padding: 75px;
+  }
+
+  .features-p {
+    border: #e9c46a 2px solid;
+    padding: 77px;
+    margin: 15px;
+    width: 100%;
+    color: #3d405b;
+  }
+}
 /* WhyUseDIA / get started homepage */
 
 .why-section {
-  padding: 250px;
+  padding: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .why-section h3 {
@@ -99,6 +139,22 @@ span {
 
 .why-section p {
   padding: 35px;
+  width: 70%;
+  color: #3d405b;
+  font-size: 20px;
+}
+
+.why-span {
+  padding: 10px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .why-section p {
+    padding: 35px;
+    width: 90%;
+    color: #3d405b;
+    font-size: 16px;
+  }
 }
 
 /* Footer */

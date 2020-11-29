@@ -14,12 +14,25 @@ export default class Nav extends React.Component {
   render() {
     return (
       <nav>
-        <h1>
-          <Link to="/">Do It Already</Link>
-        </h1>
+        {TokenService.hasAuthToken() ? (
+          <h1>
+            <Link to="/bucket-list-categories">Do It Already</Link>
+          </h1>
+        ) : (
+          <h1>
+            <Link to="/">Do It Already</Link>
+          </h1>
+        )}
+
         <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
+          {TokenService.hasAuthToken() ? (
+            <Link to="/bucket-list-categories">Home</Link>
+          ) : (
+            <>
+              <Link to="/">Home</Link>
+              <Link to="/about">About</Link>
+            </>
+          )}
 
           {TokenService.hasAuthToken() ? (
             <button
