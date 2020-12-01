@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaCheckSquare } from "react-icons/fa";
 import TokenService from "../../Services/TokenService";
 import Context from "../../Context/Context";
 
@@ -15,13 +16,25 @@ export default class Nav extends React.Component {
     return (
       <nav>
         {TokenService.hasAuthToken() ? (
-          <h1>
-            <Link to="/bucket-list-categories">Do It Already</Link>
-          </h1>
+          <div className="logo-section">
+            <span>
+              <FaCheckSquare className="logo-check" />{" "}
+            </span>
+            <h1>
+              <Link to="/bucket-list-categories">Do It Already</Link>
+            </h1>
+          </div>
         ) : (
-          <h1>
-            <Link to="/">Do It Already</Link>
-          </h1>
+          <>
+            <div className="logo-section">
+              <span>
+                <FaCheckSquare className="logo-check" />{" "}
+              </span>
+              <h1>
+                <Link to="/">Do It Already</Link>
+              </h1>
+            </div>
+          </>
         )}
 
         <div className="nav-links">

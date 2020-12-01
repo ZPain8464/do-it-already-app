@@ -181,8 +181,9 @@ export default class App extends Component {
               />
               <Route exact path="/" component={Features} />
               <Route exact path="/" component={WhyUseDIA} />
-              <Route path="/" component={Footer} />
             </main>
+
+            <Route path="/" component={Footer} />
           </div>
         </ErrorPage>
       </Context.Provider>

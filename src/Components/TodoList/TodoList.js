@@ -1,6 +1,7 @@
 import React from "react";
 import Context from "../../Context/Context";
 import TodoModal from "../TodoModal/TodoModal";
+import { FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default class TodoList extends React.Component {
@@ -28,7 +29,7 @@ export default class TodoList extends React.Component {
         <h2>{this.props.checked ? "Completed" : "Pending"} Todos</h2>
         <div className="create-todo-mobile">
           <Link to="/bucket-list-categories">
-            <button>Create a todo</button>
+            <button className="create-todo-button">Create Todo</button>
           </Link>
         </div>
         <div
@@ -60,7 +61,9 @@ export default class TodoList extends React.Component {
                     </button>
                   </div>
                   {todo.checked === true ? (
-                    <span className="checkmark-todos">✓</span>
+                    <span className="checkmark-todos">
+                      <FaCheckCircle className="completed-check-logo" />
+                    </span>
                   ) : (
                     ""
                   )}
@@ -68,8 +71,8 @@ export default class TodoList extends React.Component {
               ))}
           </ul>
           <div className="create-todo-desktop">
-            <button>
-              <Link to="/bucket-list-categories">Create a todo</Link>
+            <button className="create-todo-button">
+              <Link to="/bucket-list-categories">Create Todo</Link>
             </button>
           </div>
         </div>

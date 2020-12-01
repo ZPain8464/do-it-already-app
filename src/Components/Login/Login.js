@@ -32,15 +32,25 @@ export default class Login extends React.Component {
           className="login-form"
           aria-label="login-form"
         >
-          {this.state.error && <p className="error">{this.state.error}</p>}
           <h1>Log in to Your Account</h1>
-          <label>Username</label>
-          <input name="username" type="text" />
-          <label>Password</label>
-          <input type="password" name="password" />
-          <button type="submit">Sign in</button>
+          {this.state.error && (
+            <p className="register-error">{this.state.error}</p>
+          )}
+          <div className="credentials-section">
+            <label className="login-username">Username</label>
+            <input className="login-form-input" name="username" type="text" />
+            <label className="login-password">Password</label>
+            <input
+              className="login-form-input"
+              type="password"
+              name="password"
+            />
+            <button className="login-sign-in" type="submit">
+              Sign in
+            </button>
+          </div>
         </form>
-        <div>
+        <div className="create-account">
           <Link to="/register">Create an account</Link>
         </div>
       </div>

@@ -32,7 +32,10 @@ export default class Register extends React.Component {
           aria-label="register-form"
           onSubmit={(e) => this.handleSubmit(e)}
         >
-          {this.state.error && <p className="error">{this.state.error}</p>}
+          <h2>Register an Account</h2>
+          {this.state.error && (
+            <p className="register-error">{this.state.error}</p>
+          )}
           <label className="register-name" htmlFor="register-name">
             Name
           </label>
@@ -43,9 +46,11 @@ export default class Register extends React.Component {
           <input type="text" name="username" />
           <label className="register-password">Password</label>
           <input type="password" name="password" />
-          <label>Confirm Password</label>
+          <label className="confirm-password">Confirm Password</label>
           <input type="password" name="confirmPassword" />
-          <button type="submit">Submit</button>
+          <button className="register-submit" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     );

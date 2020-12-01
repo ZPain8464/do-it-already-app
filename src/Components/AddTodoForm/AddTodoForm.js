@@ -99,40 +99,53 @@ export default class AddTodoForm extends React.Component {
       <div className="add-todo">
         <form onSubmit={(e) => this.handleSubmit(e)} className="add-todo-form">
           <h2>Create a Bucket List Todo</h2>
-          <label>Name your bucket list todo:</label>
-          <input
-            onChange={(e) => this.updateTitle(e.target.value)}
-            type="text"
-            name="title"
-          />
-          {this.state.title.touched && <ValidationError message={titleError} />}
-          <label>Description:</label>
-          <input type="text" className="description" name="description" />
-          <select
-            onChange={(e) => this.changeCategory(e)}
-            name="category_id"
-            id="category-dropdown"
-          >
-            {categories.map((c, i) => (
-              <option
-                key={i}
-                value={c.id}
-                selected={
-                  c.category === this.props.match.params.category
-                    ? "selected"
-                    : false
-                }
-              >
-                {c.category}
-              </option>
-            ))}
-          </select>
+          <div className="add-todo-section">
+            <label className="add-todo-label">Name your todo:</label>
+            <input
+              onChange={(e) => this.updateTitle(e.target.value)}
+              type="text"
+              name="title"
+              className="add-name-input"
+            />
+            {this.state.title.touched && (
+              <ValidationError message={titleError} />
+            )}
+            <label className="add-todo-label">Description:</label>
+            <input
+              type="text"
+              className="add-description-input"
+              name="description"
+            />
+            <select
+              onChange={(e) => this.changeCategory(e)}
+              name="category_id"
+              id="category-dropdown"
+            >
+              {categories.map((c, i) => (
+                <option
+                  key={i}
+                  value={c.id}
+                  selected={
+                    c.category === this.props.match.params.category
+                      ? "selected"
+                      : false
+                  }
+                >
+                  {c.category}
+                </option>
+              ))}
+            </select>
 
-          <button disabled={this.validateTitle()} type="submit">
-            Add Todo
-          </button>
+            <button
+              className="add-todo-button"
+              disabled={this.validateTitle()}
+              type="submit"
+            >
+              Add Todo
+            </button>
+          </div>
         </form>
-        <BackButton {...this.props} />
+        <BackButton {...this.props} className="back-button" />
       </div>
     );
   }

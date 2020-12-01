@@ -40,21 +40,23 @@ export default class Todo extends React.Component {
       <React.Fragment>
         <div className="view-todo-task">
           <h2>{todo.title}</h2>
-          <h3>category: {todo.category}</h3>
+          <h3 className="view-todo-category">category: {todo.category}</h3>
 
           <div className="todo-textbox">
             <p>{todo.description}</p>
           </div>
-          <div>
-            <div>
+          <div className="todo-details">
+            <div className="todo-created-date">
               <p>
-                Created on
+                Created on:
+                <span />
                 {new Date(todo.start_date).toLocaleDateString()}
               </p>
             </div>
-            <div>
+            <div className="todo-checkbox">
               <p>
                 <input
+                  className="checkmark"
                   type="checkbox"
                   checked={todo.checked ? true : false}
                   onClick={() => this.context.toggleComplete(todo.id)}
@@ -62,11 +64,12 @@ export default class Todo extends React.Component {
                 Completed?
               </p>
             </div>
-            <div>
+            <div className="edit-delete-todos">
               <Link to={`/edit-todo/${todo.id}`}>
-                <button>Edit</button>
+                <button className="edit-button">Edit</button>
               </Link>
               <button
+                className="delete-button"
                 onClick={(e) =>
                   this.deleteTodo(
                     Number(this.props.match.params.id),
@@ -76,13 +79,14 @@ export default class Todo extends React.Component {
               >
                 Delete
               </button>
-              <div>
-                <button
-                  onClick={() => this.props.history.push("/bucket-list-todos")}
-                >
-                  Close
-                </button>
-              </div>
+            </div>
+            <div className="close-todo">
+              <button
+                className="close-button"
+                onClick={() => this.props.history.push("/bucket-list-todos")}
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

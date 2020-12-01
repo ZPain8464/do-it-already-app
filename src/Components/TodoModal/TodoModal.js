@@ -41,21 +41,23 @@ function TodoModal(props) {
     <div className={showHideClassName}>
       <section className="modal-main">
         <h2>{todo.title}</h2>
-        <h3>category: {todo.category}</h3>
+        <h3 className="view-todo-category">category: {todo.category}</h3>
 
         <div className="todo-textbox">
           <p>{todo.description}</p>
         </div>
-        <div>
-          <div>
+        <div className="todo-details">
+          <div className="todo-created-date">
             <p>
-              Created on
+              Created on:
+              <span />
               {new Date(todo.start_date).toLocaleDateString()}
             </p>
           </div>
-          <div>
+          <div className="todo-checkbox">
             <p>
               <input
+                className="checkmark"
                 type="checkbox"
                 checked={todo.checked ? true : false}
                 onClick={() => context.toggleComplete(todo.id)}
@@ -63,18 +65,21 @@ function TodoModal(props) {
               Completed?
             </p>
           </div>
-          <div>
+          <div className="edit-delete-todos">
             <Link to={`/edit-todo/${todo.id}`}>
-              <button>Edit</button>
+              <button className="edit-button">Edit</button>
             </Link>
             <button
+              className="delete-button"
               onClick={(e) => deleteTodo(Number(todo.id), context.deleteTodo)}
             >
               Delete
             </button>
           </div>
         </div>
-        <button onClick={props.handleClose}>Close</button>
+        <button className="close-button" onClick={props.handleClose}>
+          Close
+        </button>
       </section>
     </div>
   );

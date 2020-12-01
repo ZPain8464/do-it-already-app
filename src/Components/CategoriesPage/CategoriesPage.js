@@ -46,27 +46,27 @@ export default class CategoriesPage extends React.Component {
           <div className="bucket-list-categories">
             <div className="bucket-list-category prod">
               <h2>Productivity</h2>
-              <button>
-                <Link to="/add-todo/productivity">Get productive</Link>
+              <button className="add-cat-button">
+                <Link to="/add-todo/productivity">Get Productive</Link>
               </button>
             </div>
             <div className="bucket-list-category fit">
               <h2>Fitness</h2>
-              <button>
-                <Link to="/add-todo/fitness">Get fit</Link>
+              <button className="add-cat-button">
+                <Link to="/add-todo/fitness">Get Fit</Link>
               </button>
             </div>
 
             <div className="bucket-list-category fin">
               <h2>Finance</h2>
-              <button>
-                <Link to="/add-todo/finance">Get saving</Link>
+              <button className="add-cat-button">
+                <Link to="/add-todo/finance">Get Saving</Link>
               </button>
             </div>
             <div className="bucket-list-category trav">
               <h2>Travel</h2>
-              <button>
-                <Link to="/add-todo/travel">Get traveling</Link>
+              <button className="add-cat-button">
+                <Link to="/add-todo/travel">Get Traveling</Link>
               </button>
             </div>
           </div>

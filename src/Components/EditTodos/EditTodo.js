@@ -125,25 +125,35 @@ export default class EditTodo extends React.Component {
       <div className="edit-todos">
         <form onSubmit={(e) => this.handleSubmit(e)} className="edit-form">
           <h2>Edit Todo</h2>
-          <label>Name:</label>
-          <input
-            onChange={(e) => this.handleUpdateTitle(e)}
-            name="title"
-            type="text"
-            value={title}
-          />
-          <label>Description:</label>
-          <input
-            onChange={(e) => this.handleUpdateDescription(e)}
-            type="text"
-            name="description"
-            value={description}
-          />
-          <button type="button" onClick={this.handleClickCancel}>
+          <div className="edit-section">
+            <label className="edit-todo-label">Name:</label>
+            <input
+              className="edit-name-input"
+              onChange={(e) => this.handleUpdateTitle(e)}
+              name="title"
+              type="text"
+              value={title}
+            />
+            <label className="edit-todo-label">Description:</label>
+            <input
+              className="edit-description-input"
+              onChange={(e) => this.handleUpdateDescription(e)}
+              type="text"
+              name="description"
+              value={description}
+            />
+            <button className="edit-todos-button" type="submit">
+              Save changes
+            </button>
+          </div>
+          <button
+            className="edit-todos-button"
+            type="button"
+            onClick={this.handleClickCancel}
+          >
             {" "}
             Cancel
           </button>
-          <button type="submit">Save changes</button>
         </form>
       </div>
     );

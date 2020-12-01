@@ -3,6 +3,17 @@
   font-family: sans-serif;
   margin: 0;
 }
+
+* p {
+  color: #3d405b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 /* Nav bar */
 nav {
   border: #e76f51 solid 2px;
@@ -53,21 +64,37 @@ span {
   display: block;
 }
 
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo-check {
+  font-size: 35px;
+  color: #3d405b;
+}
+
 /* button */
 #get-started {
   padding: 14px;
   font-size: 20px;
   margin-top: 20px;
   border-radius: 20px;
+  background-color: #3478dd;
+  border: 3px #3478dd solid;
+  box-shadow: 0 3px 0 #3d405b;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+#get-started:active {
+  box-shadow: 0 3px 0 #3d405b;
+  transform: translateY(3px);
 }
 
 #get-started a {
   text-decoration: none;
-  color: #3d405b;
-}
-
-#get-started a:hover {
-  color: #e76f51;
+  color: white;
 }
 
 /* Features / get started homepage */
@@ -162,6 +189,10 @@ span {
   border: #e76f51 2px solid;
   background-color: #e76f51;
   color: #3d405b;
+  height: 25px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 /* Homepage media queries */
@@ -182,6 +213,30 @@ span {
 
 /* About page */
 
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about p {
+  color: #3d405b;
+}
+
+.about-categories {
+  display: flex;
+  justify-content: center;
+}
+
+.how-it-works {
+  width: 50%;
+}
+
+.how-it-works ol {
+  text-align: initial;
+  padding-top: 15px;
+}
+
 .about-ul {
   list-style-type: none;
   padding: 0;
@@ -197,6 +252,45 @@ span {
 }
 
 /* Login page */
+
+.credentials-section {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid grey;
+  padding: 30px;
+  border-radius: 20px;
+  align-items: center;
+  margin-top: 2%;
+  background: #e76f51;
+}
+
+.create-account {
+  padding: 15px;
+  font-size: 25px;
+}
+
+.login-form-input {
+  border-radius: 20px;
+  padding: 5px;
+  width: 90%;
+}
+
+.login-sign-in {
+  padding: 12px;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: #3478dd;
+  color: white;
+  cursor: pointer;
+}
+
+.login-username,
+.login-password {
+  font-size: 20px;
+  padding: 5px;
+  color: #3d405b;
+}
 
 .login-form {
   display: flex;
@@ -235,10 +329,67 @@ span {
 
 /* Register user page */
 
+.register-user {
+  display: flex;
+  justify-content: center;
+}
+
 .register-form {
+  border-radius: 20px;
+  background: #e76f51;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: grey 2px solid;
+  width: 40%;
+  padding: 50px;
+  margin-top: 5%;
+}
+
+.register-form input {
+  border-radius: 20px;
+  padding: 5px;
+  width: 90%;
+}
+
+.register-name,
+.register-username,
+.register-password,
+.confirm-password {
+  font-size: 20px;
+  padding: 5px;
+  color: #3d405b;
+}
+
+.register-error {
+  border: 2px white solid;
+  border-radius: 20px;
+  padding: 5px;
+  background: white;
+  color: #3d405b;
+}
+
+.register-submit {
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  background-color: #3478dd;
+  color: white;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: grey 2px solid;
+    width: 80%;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 10%;
+  }
 }
 
 /* CategoriesPage / Main categories page */
@@ -271,7 +422,18 @@ h2 {
   margin: 10px auto;
   max-width: 1200px;
   flex-direction: column;
-  padding-bottom: 65px;
+  padding-bottom: 10px;
+}
+
+.add-cat-button {
+  background: white;
+}
+
+.add-cat-button a,
+a:active {
+  font-size: 15px;
+  text-decoration: none;
+  color: #3d405b;
 }
 
 .bucket-list-category {
@@ -306,11 +468,75 @@ h2 {
 
 .view-bucket-list-todos {
   margin-bottom: 50px;
+  border: #3478dd 2px solid;
+  border-radius: 20px;
   padding: 15px;
   font-size: 25px;
+  background: #3478dd;
+  box-shadow: 0 2px 0 #3d405b;
+  cursor: pointer;
+  transition: all 0.1s linear;
 }
 
-/* BucketListTodos / main todos page */
+.view-bucket-list-todos a {
+  text-decoration: none;
+  padding: 15px;
+  font-size: 25px;
+  color: white;
+}
+
+.view-bucket-list-todos:active {
+  box-shadow: 0 2px 0 #3d405b;
+  transform: translateY(3px);
+}
+
+/* Todolist / main todos page */
+
+.completed-check-logo {
+  position: relative;
+  bottom: 25px;
+  left: 5px;
+  font-size: 30px;
+  color: white;
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+  .completed-check-logo {
+    position: relative;
+    bottom: 45px;
+    left: 0px;
+    font-size: 45px;
+    color: white;
+  }
+}
+
+.create-todo-button {
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 15px;
+  border-radius: 20px;
+  background-color: #3478dd;
+  border: 3px #3478dd solid;
+  box-shadow: 0 3px 0 #3d405b;
+  cursor: pointer;
+  transition: all 0.1s linear;
+  color: white;
+}
+
+.create-todo-button:active {
+  color: white;
+  box-shadow: 0 3px 0 #3d405b;
+  transform: translateY(3px);
+}
+
+.create-todo-button a {
+  text-decoration: none;
+  color: white;
+}
+
+.create-todo-button a:visited {
+  color: white;
+}
 
 .productivity {
   background-color: #48cae4;
@@ -345,11 +571,11 @@ h2 {
 
 .completed-todos,
 .pending-todos a:link {
-  color: #3d405b;
+  color: white;
 }
 
 .completed-todos a:visited {
-  color: #3d405b;
+  color: white;
 }
 
 .checkmark-todos {
@@ -357,7 +583,7 @@ h2 {
 }
 
 .pending-todos a:visited {
-  color: #3d405b;
+  color: white;
 }
 
 .main-todos {
@@ -369,11 +595,6 @@ h2 {
 .view-todo {
   flex: 1;
 }
-/* .completed-todos,
-.pending-todos,
-.view-todo {
-  flex: 1;
-} */
 
 .inactive-form {
   display: none;
@@ -383,7 +604,6 @@ ul li {
   padding: 10px;
   list-style-type: none;
   border-radius: 20px;
-  /* border: grey 2px solid; */
   margin: 10px;
   background-color: #e5e5e5;
 }
@@ -399,11 +619,16 @@ ul {
 }
 
 .view-todo-task {
-  border: grey 2px solid;
+  border: #e76f51 2px solid;
+  background: #e76f51;
   padding: 10px;
   border-radius: 20px;
   margin-top: 30px;
   width: 85%;
+}
+
+.view-todo-category {
+  color: #3d405b;
 }
 
 .todo-textbox {
@@ -415,13 +640,50 @@ ul {
   margin-top: 5%;
 }
 
-/* .view-todo-task {
-  border: grey 2px solid;
-  background-color: #e5e5e5;
-  width: 75%;
-  margin: 0 auto;
-  padding: 25px;
-} */
+.todo-details,
+.todo-checkbox,
+.edit-delete-todos {
+  margin-top: 10px;
+}
+
+.todo-textbox {
+  background: white;
+}
+
+.edit-delete-todos {
+  display: inline-block;
+  padding: 10px;
+}
+
+.delete-button,
+.edit-button,
+.close-button {
+  margin: 5px;
+  padding: 5px;
+  font-size: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: #3478dd;
+  border: 3px #3478dd solid;
+  box-shadow: 0 3px 0 #3d405b;
+  color: white;
+  cursor: pointer;
+}
+
+.todo-checkbox {
+  display: flex;
+  justify-content: center;
+}
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+}
+
+.checkmark p {
+  font-size: 20px;
+}
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
   .main-todos {
@@ -453,6 +715,9 @@ ul {
   .view-todo-modal-button {
     padding: 7px;
     margin: 5px;
+    background: none;
+    border: none;
+    font-size: 20px;
   }
 }
 
@@ -485,14 +750,54 @@ ul {
   align-items: center;
 }
 
-.add-todo-form button {
+.add-todo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: #e76f51 solid 2px;
+  background: #e76f51;
+  border-radius: 20px;
+  padding: 15px;
+  width: 75%;
+}
+
+.add-todo-button,
+.back-button {
+  margin: 5px;
   padding: 5px;
-  margin: 10px;
+  font-size: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: #3478dd;
+  border: 3px #3478dd solid;
+  box-shadow: 0 3px 0 #3d405b;
+  color: white;
+  cursor: pointer;
 }
 
 #category-dropdown {
   padding: 5px;
   margin: 10px;
+  border-radius: 20px;
+}
+
+.add-todo-label {
+  font-size: 20px;
+  padding: 5px;
+  color: #3d405b;
+}
+
+.add-name-input {
+  border-radius: 20px;
+  padding: 5px;
+  width: 90%;
+}
+
+.add-description-input {
+  border-radius: 20px;
+  padding: 5px;
+  width: 90%;
+  height: 100px;
 }
 
 /* Modal styling */
@@ -503,20 +808,20 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(46, 43, 43, 0.056);
+  background: rgba(6, 5, 5, 0.056);
 }
 
 .modal-main {
   position: fixed;
-  background: white;
+  background: #e76f51;
   width: 80%;
-  height: 73%;
+  height: 60%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.nodal-main h2 {
+.modal-main h2 {
   margin-top: 25px;
 }
 
@@ -530,9 +835,54 @@ ul {
 
 /* Edit form */
 
+.edit-todos {
+  justify-content: center;
+  display: flex;
+}
+
 .edit-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 35px;
+}
+
+.edit-name-input {
+  border-radius: 20px;
+  padding: 5px;
+  width: 90%;
+}
+
+.edit-description-input {
+  border-radius: 20px;
+  padding: 5px;
+  width: 90%;
+  height: 100px;
+}
+
+.edit-todo-label {
+  font-size: 20px;
+  padding: 5px;
+  color: #3d405b;
+}
+
+.edit-section {
+  width: 100%;
+  border: #e76f51 2px solid;
+  background: #e76f51;
+  border-radius: 20px;
+  padding: 15px;
+}
+
+.edit-todos-button {
+  margin: 5px;
+  padding: 5px;
+  font-size: 15px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: #3478dd;
+  border: 3px #3478dd solid;
+  box-shadow: 0 3px 0 #3d405b;
+  color: white;
+  cursor: pointer;
 }
