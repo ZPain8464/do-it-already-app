@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Do It Already - bucket list todo app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Live app: (https://do-it-already-app.vercel.app/)
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- Summary
+- Screenshots
+- Technologies
 
-### `npm start`
+## Summary
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Do It Already is a todo list app with the goal of empowering users to achieve their bucket list one by one. The app allows users to cross off bucket list todos as they accomplish them.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Bucket list todos are divided into four main categories:
 
-### `npm test`
+1. Productivity
+2. Finance
+3. Fitness
+4. Travel
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After a user creates a bucket list todo, they can find it in the "Pending Todos" column on their "Bucket List Todos" dashboard.
 
-### `npm run build`
+Once they've marked a todo complete, it moves to the "Completed Todos" column so they can view their accomplishments over time.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Both Pending and Completed Todos are visible on the "Bucket List Todos"
+dashboard if a user clicks on them. This will open up the todo so the user can see when it was created; it's also where users can update/edit their todos and delete them if necessary.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Do It Already landing page
 
-### `npm run eject`
+![do-it-already-landing-page] (./public/do-it-already-landing-page.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Do It Already categories dashboard
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![do-it-already-categories-dashboard] (./public/do-it-alread-categories-dashboard.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Do It Already Bucket List Todos board (mobile view w/ modal)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![do-it-already-mobile-screen-view] (./public/do-it-already-mobile-screen.png)
 
-## Learn More
+## Technologies
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+For this app, I used:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Node.js (v. 12.18.3)
+- React.js (v. 17.0.1)
+- PostgreSQL (v. 12.4)
+- Express (v. 4.17.1)
