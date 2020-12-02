@@ -30,15 +30,15 @@ dashboard if a user clicks on them. This will open up the todo so the user can s
 
 ### Do It Already landing page
 
-![do-it-already-landing-page] (./public/do-it-already-landing-page.png)
+![do-it-already-landing-page] (public/do-it-already-landing-page.png)
 
 ### Do It Already categories dashboard
 
-![do-it-already-categories-dashboard] (./public/do-it-alread-categories-dashboard.png)
+![do-it-already-categories-dashboard] (public/do-it-alread-categories-dashboard.png)
 
 ### Do It Already Bucket List Todos board (mobile view w/ modal)
 
-![do-it-already-mobile-screen-view] (./public/do-it-already-mobile-screen.png)
+![do-it-already-mobile-screen-view] (public/do-it-already-mobile-screen.png)
 
 ## Technologies
 
